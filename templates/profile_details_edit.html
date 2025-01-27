@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Personal Details{% endblock %}
+
+{% block content %}
+
+
+<form method="POST" enctype="multipart/form-data">
+    <label for="first_name"><a class="pp1">Imię:</a></label>
+    <input type="text" name="first_name" id="first_name" value="{{ user.first_name or '' }}" required>
+
+    <label for="last_name"><a class="pp1">Nazwisko:</a></label>
+    <input type="text" name="last_name" id="last_name" value="{{ user.last_name or '' }}" required>
+
+    <label for="birth_date"><a class="pp1">Data urodzin:</a></label>
+    <input type="date" name="birth_date" id="birth_date" value="{{ user.birth_date or '' }}">
+
+    <label for="age"><a class="pp1">Wiek:</a></label>
+    <input type="number" name="age" id="age" value="{{ user.age or '' }}">
+
+    <label for="weight"><a class="pp1">Waga (kg):</a></label>
+    <input type="number" step="0.1" name="weight" id="weight" value="{{ user.weight or '' }}">
+
+    <label for="height"><a class="pp1">Wzrost (cm):</a></label>
+    <input type="number" step="0.1" name="height" id="height" value="{{ user.height or '' }}">
+
+    <label for="weight_goal"><a class="pp1">Docelowa waga (kg):</a></label>
+    <input type="number" step="0.1" name="weight_goal" id="weight_goal" value="{{ user.weight_goal or '' }}">
+
+    <label for="bio"><a class="pp1">Bio:</a></label>
+    <textarea name="bio" id="bio" rows="4">{{ user.bio or '' }}</textarea>
+
+    <label for="favorite_foods"><a class="pp1">Ulubione jedzenie:</a></label>
+    <textarea name="favorite_foods" id="favorite_foods" rows="2">{{ user.favorite_foods or '' }}</textarea>
+
+    <label for="favorite_products"><a class="pp1">Zdjęcie profilowe:</a></label>
+    <textarea name="favorite_products" id="favorite_products" rows="2">{{ user.favorite_products or '' }}</textarea>
+
+    <label for="profile_image"><a class="pp1">Profile Image:</a></label>
+    <input type="file" name="profile_image" id="profile_image">
+
+    {% if user.profile_image %}
+    <p><a class="pp1">Poprzednie zdjęcie profilowe:</a></p>
+    <img src="{{ url_for('static', filename=user.profile_image) }}" alt="Profile Image" class="profile-image">
+    {% endif %}
+
+    <button type="submit" class="btn glass">Zapisz zmiany</button>
+</form>
+<style>
+    /* General form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: rgba(45, 2, 85, 0.87);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.pp1 {
+       color: white;
+       text-shadow: 4px 4px 8px #000000;
+     }   
+   
+/* Input and textarea styling */
+form input[type="text"],
+form input[type="date"],
+form input[type="number"],
+form input[type="file"],
+form textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Textarea styling */
+form textarea {
+    resize: none;
+}
+
+/* Profile image display */
+form .profile-image {
+    margin-top: 10px;
+    max-width: 100px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Submit button styling */
+form .btn-save {
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form .btn-save:hover {
+    background-color: #0056b3;
+}
+</style>
+{% endblock %}

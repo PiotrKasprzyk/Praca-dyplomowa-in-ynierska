@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+
+<div class="product-cards">
+    
+    <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+          <img
+          src="{{ url_for('static', filename='icons/profile_details.webp') }}" alt="Personal Details" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Moje dane!</h2>
+          <p>Tu możesz wprowadzić swoje dane osobowe oraz je edytować</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/profile/details">Moje dane</a></button>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+          <img src="{{ url_for('static', filename='icons/my_diets.webp') }}" alt="My Diets" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Moje Diety!</h2>
+          <p>Tu możesz wprowadzić swoje spersonalizwane diety.Możesz dodawać,usuwać oraz edytować.</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/profile/diets">Moje diety</a></button>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+          <img src="{{ url_for('static', filename='icons/training_plan.webp') }}" alt="My Training Plan" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Moje Plany treningowe!!</h2>
+          <p>Tu możesz wprowadzić swoje spersonalizwane plany treningowe.Możesz dodawać,usuwać oraz edytować.</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/profile/training-plan">Moje plany treningowe</a></button>
+          </div>
+        </div>
+      </div>  
+      <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+          <img src="{{ url_for('static', filename='icons/achievements.webp') }}" alt="My Training Plan" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Moje osiągnięcia!</h2>
+          <p>Tu możesz swoje osiągnięcia.</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/profile/achievements">Moje osiągnięcia</a></button>
+          </div>
+        </div>
+      </div>  
+      <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+          <img src="{{ url_for('static', filename='icons/settings.webp') }}" alt="Settings" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Ustawienia!</h2>
+          <p>Tu możesz zmienić hasło oraz email.Również możesz wygenerować swój raport z diety i planu treningu.</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/profile/settings">Ustawienia</a></button>
+          </div>
+        </div>
+      </div> 
+      <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+          <img src="{{ url_for('static', filename='icons/journal.webp') }}" alt="Journal" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Mój dziennik aktywności!</h2>
+          <p>Tu możesz prowadzić dziennik związany z twoja aktywności fizyczną oraz dietą.</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/profile/journal">Dziennik</a></button>
+          </div>
+        </div>
+      </div>
+    <style> 
+      .card-title {
+        color: white;
+        text-shadow: 4px 4px 8px #000000;
+      }
+    </style>
+</div>
+{% endblock %}

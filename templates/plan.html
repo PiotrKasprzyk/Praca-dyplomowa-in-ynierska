@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Training Plans{% endblock %}
+
+{% block content %}
+
+
+<form method="GET" action="/plan" class="filter-form">
+    <div class="filter-row">
+        <label for="location">Lokacja:</label>
+        <select name="location" id="location">
+            <option value="All">Wszystkie</option>
+            {% for loc in locations %}
+            <option value="{{ loc }}" {% if request.args.get('location') == loc %}selected{% endif %}>{{ loc }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="experience">Doświadczenie:</label>
+        <select name="experience" id="experience">
+            <option value="All">Wszystkie</option>
+            {% for exp in experiences %}
+            <option value="{{ exp }}" {% if request.args.get('experience') == exp %}selected{% endif %}>{{ exp }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="filter-row">
+        <button type="submit" class="btn glass">Filtruj</button>
+        <a href="/plan" class="btn glass">Resetuj</a>
+    </div>
+</form>
+
+<hr>
+
+<div class="exercise-cards">
+    {% for plan in training_plans %}
+    <div class="card glass w-96" >
+        <h2 style="font-weight: bold; font-size:1.5em">{{ plan.goal }}</h2>
+        <p><strong>Lokacja:</strong> {{ plan.location }}</p>
+        <p><strong>Doświadczenie:</strong> {{ plan.experience }}</p>
+        <p><strong>Wyposażenie:</strong> {{ plan.equipment }}</p>
+        <p><strong>Linity zdrowtne:</strong> {{ plan.health_limitations }}</p>
+        <button onclick="toggleDetails({{ plan.id }})" btn btn-primary>Szczegóły</button>
+
+        <div class="plan-details" id="details-{{ plan.id }}" style="display: none;">
+            <h3 style="font-weight: bold; font-size:1.5em">Szczególy planu treningowego</h3>
+            {% for detail in plan.details %}
+            <div class="day-plan">
+                <h4>{{ detail.day }} - {{ detail.workout }}</h4>
+                <ul>
+                    {% for exercise in detail.exercises %}
+                    <li><strong>{{ exercise.name }}</strong>: {{ exercise.sets }} serie po {{ exercise.reps }} powtórzenia</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function toggleDetails(planId) {
+    const detailsDiv = document.getElementById(`details-${planId}`);
+    if (detailsDiv.style.display === "none") {
+        detailsDiv.style.display = "block";
+    } else {
+        detailsDiv.style.display = "none";
+    }
+}
+</script>
+{% endblock %}

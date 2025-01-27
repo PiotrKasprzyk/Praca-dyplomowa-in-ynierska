@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}My Diets{% endblock %}
+
+{% block content %}
+<button class="btn glass"><a href="{{ url_for('add_diet') }}" >Dodaj diete</a></button>
+<button class="btn glass"><a href="{{ url_for('profile') }}">Powrót do profilu</a></button>
+
+<div class="exercise-cards">
+    {% for diet in diets %}
+    <div class="card glass w-96">
+        <div class="card-body">
+            
+            {% set days_translation = {
+                "Monday": "Poniedziałek",
+                "Tuesday": "Wtorek",
+                "Wednesday": "Środa",
+                "Thursday": "Czwartek",
+                "Friday": "Piątek",
+                "Saturday": "Sobota",
+                "Sunday": "Niedziela"
+            } %}
+            
+            <h3>{{ days_translation[diet.day_of_week] }}</h3>
+        <p><strong>Śniadanie:</strong> {{ diet.breakfast }}</p>
+        <details>
+            <summary>Przepis</summary>
+            <p>{{ diet.breakfast_recipe[0].details if diet.breakfast_recipe }}</p>
+        </details>
+
+        <p><strong>Drugie śniadanie:</strong> {{ diet.second_breakfast }}</p>
+        <details>
+            <summary>Przepis</summary>
+            <p>{{ diet.second_breakfast_recipe[0].details if diet.second_breakfast_recipe }}</p>
+        </details>
+
+        <p><strong>Obiad:</strong> {{ diet.lunch }}</p>
+        <details>
+            <summary>Przepis</summary>
+            <p>{{ diet.lunch_recipe[0].details if diet.lunch_recipe }}</p>
+        </details>
+
+        <p><strong>Kolacja:</strong> {{ diet.dinner }}</p>
+        <details>
+            <summary>Przepis</summary>
+            <p>{{ diet.dinner_recipe[0].details if diet.dinner_recipe }}</p>
+        </details>
+
+        <p><strong>Podwieczorek:</strong> {{ diet.snack }}</p>
+        <details>
+            <summary>Przepis</summary>
+            <p>{{ diet.snack_recipe[0].details if diet.snack_recipe }}</p>
+        </details>
+
+        <div class="diet-actions">
+            <a href="{{ url_for('edit_diet', diet_id=diet.id) }}" class="btn glass">Edytuj</a>
+            <form method="POST" action="{{ url_for('delete_diet', diet_id=diet.id) }}" class="delete-form">
+                <button type="submit" class="btn glass">Usuń</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

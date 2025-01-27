@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Exercises{% endblock %}
+
+{% block content %}
+
+
+<div class="exercise-cards">
+    
+    <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+            <img src="/static/images/home_exercises.webp" alt="Home Exercises" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Ćwiczenia domowe</h2>
+          <p>Poznaj ćwiczenia, które możesz wykonywać w domu.</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/exercises/home">Zobacz ćwiczenia domowe</a></button>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card bg-base-100 image-full w-96 shadow-xl">
+        <figure>
+            <img src="/static/images/gym_exercises.webp" alt="Gym Exercises"/>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Ćwiczenia na siłowni</h2>
+          <p>Poznaj ćwiczenia, które możesz wykonywać na siłowni.</p>
+          <div class="card-actions justify-end">
+            <button class="btn glass"><a href="/exercises/gym" >Zobacz ćwiczenia na siłowni</a></button>
+          </div>
+        </div>
+      </div>
+</div>
+<style> 
+  .card-title {
+    color: white;
+    text-shadow: 4px 4px 8px #000000;
+  }
+</style>
+{% endblock %}

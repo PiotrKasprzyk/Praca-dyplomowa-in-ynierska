@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Journal Entry{% endblock %}
+
+{% block content %}
+<h1 class="pp1">Edycja wpisu</h1>
+
+<form method="POST" action="{{ url_for('edit_journal_entry', entry_id=entry.id) }}">
+    <label for="date"><a class="pp1">Data:</a></label>
+    <input type="date" name="date" id="date" value="{{ entry.date }}" required>
+
+    <label for="day_of_week"><a class="pp1">Dzień tygodnia:</a></label>
+    <input type="text" name="day_of_week" id="day_of_week" value="{{ entry.day_of_week }}" required>
+
+    <h3>Posiłki</h3>
+    <label for="breakfast"><a class="pp1">Śniadanie:</a></label>
+    <textarea name="breakfast" id="breakfast">{{ entry.breakfast }}</textarea>
+
+    <label for="second_breakfast"><a class="pp1">Drugie śniadanie:</a></label>
+    <textarea name="second_breakfast" id="second_breakfast">{{ entry.second_breakfast }}</textarea>
+
+    <label for="lunch"><a class="pp1">Obiad:</a></label>
+    <textarea name="lunch" id="lunch">{{ entry.lunch }}</textarea>
+
+    <label for="dinner"><a class="pp1">Kolacja:</a></label>
+    <textarea name="dinner" id="dinner">{{ entry.dinner }}</textarea>
+
+    <label for="snack"><a class="pp1">Podwieczorek:</a></label>
+    <textarea name="snack" id="snack">{{ entry.snack }}</textarea>
+
+    <h3 class="pp1">Trening</h3>
+    <div id="workouts">
+        {% for workout in entry.workout_details %}
+        <div class="workout">
+            <label><a class="pp1">Typ treningu(ćwiczenie):</a></label>
+            <input type="text" name="workout_type" value="{{ workout.type }}" required>
+            <label><a class="pp1">Powtórzenia:</a></label>
+            <input type="text" name="workout_reps" value="{{ workout.reps }}">
+            <label><a class="pp1">Notatki:</a></label>
+            <textarea name="workout_notes">{{ workout.notes }}</textarea>
+        </div>
+        {% endfor %}
+    </div>
+    <button type="button" onclick="addWorkout()">Dodaj ćwiczenie</button>
+
+    <label for="conclusions"><a class="pp1">Wnioski:</a></label>
+    <textarea name="conclusions" id="conclusions">{{ entry.conclusions }}</textarea>
+
+    <button type="submit">Zapisz zmiany</button>
+</form>
+
+<script>
+    function addWorkout() {
+        const workoutsDiv = document.getElementById('workouts');
+        const newWorkout = document.createElement('div');
+        newWorkout.classList.add('workout');
+        newWorkout.innerHTML = `
+            <label>Workout Type:</label>
+            <input type="text" name="workout_type" required>
+            <label>Reps:</label>
+            <input type="text" name="workout_reps">
+            <label>Notes:</label>
+            <textarea name="workout_notes"></textarea>
+        `;
+        workoutsDiv.appendChild(newWorkout);
+    }
+</script>
+<style>
+    /* General form styling */
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: rgba(45, 2, 85, 0.87);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-color:white;
+    }
+    .pp1 {
+        color: white;
+        text-shadow: 4px 4px 8px #000000;
+      }   
+    /* Label styling */
+    form label {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #333;
+        font-size: 14px;
+    }
+    
+    /* Input and textarea styling */
+    form input[type="text"],
+    form input[type="date"],
+    form input[type="number"],
+    form input[type="file"],
+    form textarea {
+        width: 100%;
+        margin-top: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    
+    /* Textarea styling */
+    form textarea {
+        resize: none;
+    }
+    
+    /* Profile image display */
+    form .profile-image {
+        margin-top: 10px;
+        max-width: 100px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(132, 0, 255, 0.65);
+    }
+    
+    /* Submit button styling */
+    form .btn-save {
+        margin-top: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
+        color: #fff;
+        background-color:rgb(29, 4, 253);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    form .btn-save:hover {
+        background-color:rgb(29, 4, 253);
+}
+</style>
+{% endblock %}

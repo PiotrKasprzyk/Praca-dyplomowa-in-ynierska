@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<h1>Ustawienia</h1>
+<button class="btn glass"><a href="{{ url_for('profile') }}">Powrót do profilu</a></button>
+<form method="POST">
+    <h3>Zmień e-mail</h3>
+    <label for="email">Poprzedni e-mail:</label>
+    <input type="email" name="email" value="{{ current_email }}" required>
+    <button type="submit" class="btn glass">Zatkulizuj e-mail</button>
+</form>
+
+<form method="POST">
+    <h3>Zmień hasło</h3>
+    <label for="current_password">Poprzednie hasło:</label>
+    <input type="password" name="current_password" placeholder="Enter current password" required>
+    <label for="new_password">Nowe hasło:</label>
+    <input type="password" name="new_password" placeholder="Enter new password" required>
+    <button type="submit" class="btn glass">Zatkulizuj hasło</button>
+</form>
+
+<h3>Generowanie raportu aktywności</h3>
+<a href="{{ url_for('generate_report') }}" class="btn glass">Generuj raport</a>
+
+
+{% endblock %}

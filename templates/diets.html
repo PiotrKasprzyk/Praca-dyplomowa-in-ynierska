@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Diets{% endblock %}
+
+{% block content %}
+
+
+<div class="exercise-cards">
+    {% for diet in diets %}
+    <div class="card glass w-96">
+      <div class="card-body">
+        <h2 class="card-title">{{ diet.Tytuł }}</h2>
+        <p><strong>Wiek:</strong> {{ diet.Wiek }}</p>
+        <p><strong>Płeć:</strong> {{ diet.Płeć }}</p>
+        <p><strong>Poziom aktywności fizycznej:</strong> {{ diet.Poziom_aktywności_fizycznej }}</p>
+        <p><strong>Preferencje:</strong> {{ diet.Preferencje or 'None' }}</p>
+        <p><strong>Wykluczenia:</strong> {{ diet.Wykluczenia or 'None' }}</p>
+        <p><strong>Inne:</strong> {{ diet.Inne_szczegóły or 'None' }}</p>
+        <a href="/diets/{{ diet.id }}" class="btn glass">Więcej!</a>
+      </div>
+    </div>
+    
+  
+    {% endfor %}
+</div>
+{% endblock %}

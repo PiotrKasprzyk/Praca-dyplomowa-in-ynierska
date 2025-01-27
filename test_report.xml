@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="TestAppEndpoints-20250125050244" tests="8" file=".py" time="0.065" timestamp="2025-01-25T05:02:44" failures="0" errors="0" skipped="0">
+		<testcase classname="TestAppEndpoints" name="test_bmi_page" time="0.007" timestamp="2025-01-25T05:02:44" file="test_app.py" line="47"/>
+		<testcase classname="TestAppEndpoints" name="test_diets_page" time="0.030" timestamp="2025-01-25T05:02:44" file="test_app.py" line="37"/>
+		<testcase classname="TestAppEndpoints" name="test_exercises_page" time="0.002" timestamp="2025-01-25T05:02:44" file="test_app.py" line="42"/>
+		<testcase classname="TestAppEndpoints" name="test_forum_page" time="0.001" timestamp="2025-01-25T05:02:44" file="test_app.py" line="27"/>
+		<testcase classname="TestAppEndpoints" name="test_homepage" time="0.003" timestamp="2025-01-25T05:02:44" file="test_app.py" line="17"/>
+		<testcase classname="TestAppEndpoints" name="test_login_page" time="0.003" timestamp="2025-01-25T05:02:44" file="test_app.py" line="22"/>
+		<testcase classname="TestAppEndpoints" name="test_opinions_page" time="0.007" timestamp="2025-01-25T05:02:44" file="test_app.py" line="52"/>
+		<testcase classname="TestAppEndpoints" name="test_products_page" time="0.013" timestamp="2025-01-25T05:02:44" file="test_app.py" line="32"/>
+	</testsuite>
+</testsuites>
